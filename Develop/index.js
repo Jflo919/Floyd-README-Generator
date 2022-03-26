@@ -8,12 +8,28 @@ const questionsUser = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is your name?'    
+            message: 'What is your name?',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('You have to enter your name');
+                    return false;
+                }
+            }    
         },
         {
             type: 'input',
             name: 'github',
-            message: 'Enter your GitHub Username'
+            message: 'Enter your GitHub Username',
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your Github Username!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
@@ -23,7 +39,15 @@ const questionsUser = () => {
         {
             type: 'input',
             name: 'email',
-            message: 'What is your Email address?'
+            message: 'What is your Email address?',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('You have to enter an Email!');
+                    return false;
+                }
+            }
         }
     ]);
 };
@@ -38,12 +62,28 @@ const questionsProject = () => {
         {
             type: 'input',
             name: 'title',
-            message: 'What is the title of your project for the README?'
+            message: 'What is the title of your project for the README?',
+            validate: titleInput => {
+                if (titleInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a title for your README');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'description',
-            message: 'Enter the Description of your project for the README:'   
+            message: 'Enter the Description of your project for the README:',
+            validate: descriptionInput => {
+                if (descriptionInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a desctiption for your project README!');
+                    return false;
+                }
+            }   
         },
         {
             type: 'input',
@@ -53,7 +93,15 @@ const questionsProject = () => {
         {
             type: 'input',
             name: 'usage',
-            message: 'Enter your Usage section for your project README:'
+            message: 'Enter your Usage section for your project README:',
+            validate: usageInput => {
+                if (usageInput) {
+                    return true;
+                } else {
+                    console.log('Please enter Usage Instructions!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
@@ -68,7 +116,16 @@ const questionsProject = () => {
         {
             type: 'list',
             name: 'license',
-            message: 'Please select a license for your project/application:'
+            message: 'Please select a license for your project/application:',
+            choices: ['Public Domain', 'BSD (Permissive)', 'LGPL', 'GPL (CopyLeft)', 'Proprietary'],
+            validate: licenseList => {
+                if (licenseList) {
+                    return true;
+                } else {
+                    console.log('You need to choose at lease one license!');
+                    return false;
+                }
+            }
         }
     ])
 }
