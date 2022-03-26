@@ -117,12 +117,12 @@ const questionsProject = () => {
             type: 'list',
             name: 'license',
             message: 'Please select a license for your project/application:',
-            choices: ['Public Domain', 'BSD (Permissive)', 'LGPL', 'GPL (CopyLeft)', 'Proprietary'],
+            choices: ['Public Domain', 'BSD (Permissive)', 'LGPL', 'GPL (CopyLeft)', 'Proprietary', 'None selected'],
             validate: licenseList => {
                 if (licenseList) {
                     return true;
                 } else {
-                    console.log('You need to choose at lease one license!');
+                    console.log('You need to choose at lease one option!');
                     return false;
                 }
             }
