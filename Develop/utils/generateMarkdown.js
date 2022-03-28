@@ -11,6 +11,7 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
+// Need to refactor this code, so when parts of below (license section and links etc.) are put above with conditionals (if (!data.license) { return....)
 function generateMarkdown(data) {
   return `# ${data.title}
           ## Description:
