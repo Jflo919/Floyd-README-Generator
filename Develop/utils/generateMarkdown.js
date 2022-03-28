@@ -16,7 +16,13 @@ function generateMarkdown(data) {
           ## Description:
         ${data.description}
         ### Table of Contents
-
+      1. [Description](#description)
+      2. [Installation](#installation)
+      3. [Usage Instructions](#usage-instructions)
+      4. [License](#license)
+      5. [Contribution Guidelines](#contribution-guidelines)
+      6. [Test Instructions](#test-instructions)
+      7. [Questions/About](#questions)
         ### Installation:
         ${data.installation}
         ### Usage Instructions:
@@ -27,7 +33,7 @@ function generateMarkdown(data) {
         ${data.contribution}
         ### Test Instructions:
         ${data.test}
-        ### Questions/About 
+        ### Questions 
         ${data.name}
         ${data.github}  Put md link outside of data.github, so users' can click on link to github profile
         * If you need to reach me for additional questions, please contact me by email:
