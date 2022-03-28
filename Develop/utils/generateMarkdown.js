@@ -35,7 +35,8 @@ function generateMarkdown(data) {
         ${data.test}
         ### Questions 
         ${data.name}
-        ${data.github}  Put md link outside of data.github, so users' can click on link to github profile
+        Github:
+        [${data.github}](https://github.com/${data.github})  
         * If you need to reach me for additional questions, please contact me by email:
         ${data.email}
 
