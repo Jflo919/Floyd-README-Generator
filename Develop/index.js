@@ -135,7 +135,7 @@ const questionsProject = (projectData) => {
         }
     ])
     .then(projectData => {
-    projectData.projects.push(projectData);
+ //   projectData.projects.push(projectData);
     return projectData;    
     })
 };
@@ -163,6 +163,13 @@ const questionsProject = (projectData) => {
 // Function call to initialize app
 //init();
 questionsUser()
-.then(questionsProject)
-.then()
-
+    .then(questionsProject)
+    .then(projectData => {
+    return generateReadMe(projectData);
+    })
+    .then(pageMD => {
+    return writeFile(pageMD);
+    })
+    .catch(err => {
+        console.log(err);
+    });
