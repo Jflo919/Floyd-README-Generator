@@ -3,6 +3,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 
 const generateReadMe = require('./utils/generateMarkdown.js');
+console.log('generateReadMe', generateReadMe);
 // TODO: Create an array of questions for user input
 const questionsUser = () => {
     return inquirer.prompt([
@@ -59,7 +60,7 @@ const questionsProject = (projectData) => {
         Create a New README
         ===================
     `);
-
+console.log(projectData);
     // If there is no data/readme array property, create one
     if (!projectData.projects) {
         projectData.projects = [];
@@ -134,16 +135,18 @@ const questionsProject = (projectData) => {
             }
         }
     ])
-    .then(projectData => {
- //   projectData.projects.push(projectData);
+   /* .then(projectData => {
+    projectData.projects.push(projectData);
     return projectData;    
-    })
+   */ //})
 };
 
 
 // TODO: Create a function to write README file
  const writeFile = fileContent => {
+    console.log('fileContent1', fileContent);
   return new Promise ((resolve, reject) => {
+      console.log('fileContent2', fileContent);
       fs.writeFile('./dist/README.md', fileContent, err => {
           if(err) {
               reject(err);
@@ -165,11 +168,15 @@ const questionsProject = (projectData) => {
 questionsUser()
     .then(questionsProject)
     .then(projectData => {
-    return generateReadMe(projectData);
+        console.log("projectData", projectData);
+    const readMe = generateReadMe(projectData);
+    console.log('Readme', readMe);
+    return writeFile(readMe);
     })
-    .then(pageMD => {
-    return writeFile(pageMD);
-    })
+    //.then(pageMD => {
+      //  console.log("pageMD", pageMD);
+    //return writeFile(pageMD);
+    //})
     .catch(err => {
         console.log(err);
     });

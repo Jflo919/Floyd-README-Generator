@@ -1,36 +1,37 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  let licensed = data.license;
-  if (!licensed) {
+ console.log("license", license);
+  // let licensed = data.license;
+  if (!license) {
     return '';
   }
-  if (license.choices = "Public Domain") {
+  if (license === "Public Domain") {
     return `
     [![License: CC BY-NC-ND 4.0](https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png)]
     `;
   }
-  if (license.choices = "BSD (Permissive)") {
+  if (license === "BSD (Permissive)") {
     return `
     [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
     `;
   }
-  if (license.choices = "LGPL") {
+  if (license === "LGPL") {
     return `
     [![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
     `;
   }
-  if (license.choices = "GPL (CopyLeft)") {
+  if (license === "GPL (CopyLeft)") {
     return `
     [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
     `;
   }
-  if (license.choices = "Proprietary") {
+  if (license === "Proprietary") {
     return `
     [![Generic badge](https://img.shields.io/badge/<license>-<proprietary>-<COLOR>.svg)](https://shields.io/)
     `;
   }
-  if (license.choices = "None selected") {
+  if (license === "None selected") {
     return "";
   }
 }
@@ -45,6 +46,8 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 // Need to refactor this code, so when parts of below (license section and links etc.) are put above with conditionals (if (!data.license) { return....)
 function generateMarkdown(data) {
+  
+  console.log("data", data);
   return `# ${data.title}
           ## Description:
         ${data.description}
@@ -62,7 +65,7 @@ function generateMarkdown(data) {
         ${data.usage}
         ### License:
         ${data.license}
-        ${renderLicenseBadge(licensed)}
+        ${renderLicenseBadge(data.license)}
         ### Contribution Guidelines:
         ${data.contribution}
         ### Test Instructions:
