@@ -48,34 +48,35 @@ function renderLicenseSection(license) {}
 function generateMarkdown(data) {
   
   console.log("data", data);
-  return `# ${data.title}
-          ## Description:
-        ${data.description}
-        ### Table of Contents
-      1. [Description](#description)
-      2. [Installation](#installation)
-      3. [Usage Instructions](#usage-instructions)
-      4. [License](#license)
-      5. [Contribution Guidelines](#contribution-guidelines)
-      6. [Test Instructions](#test-instructions)
-      7. [Questions/About](#questions)
-        ### Installation:
-        ${data.installation}
-        ### Usage Instructions:
-        ${data.usage}
-        ### License:
-        ${data.license}
-        ${renderLicenseBadge(data.license)}
-        ### Contribution Guidelines:
-        ${data.contribution}
-        ### Test Instructions:
-        ${data.test}
-        ### Questions 
-        ${data.name}
-        Github:
-        [${data.github}](https://github.com/${data.github})  
-        * If you need to reach me for additional questions, please contact me by email:
-        ${data.email}
+  return `
+# ${data.title}
+* ${renderLicenseBadge(data.license)}
+
+## Description:
+${data.description}
+### Table of Contents
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Usage Instructions](#usage-instructions)
+4. [License](#license)
+5. [Contribution Guidelines](#contribution-guidelines)
+6. [Test Instructions](#test-instructions)
+7. [Questions/About](#questions)
+### Installation:
+${data.installation}
+### Usage Instructions:
+${data.usage}
+### License:${data.license} 
+### Contribution Guidelines:
+${data.contribution}
+### Test Instructions:
+${data.test}
+### Questions 
+${data.name}
+Github:
+[${data.github}](https://github.com/${data.github})  
+* If you need to reach me for additional questions, please contact me by email:
+${data.email}
 
 `;
 }

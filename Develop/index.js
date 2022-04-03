@@ -9,6 +9,39 @@ const questionsUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
+            name: 'sample',
+            message: 'How Are You?'
+        }
+             ]);
+};
+
+const questionsProject = (projectData) => {
+    console.log(`
+        ===================
+        Create a New README
+        ===================
+    `);
+console.log(projectData);
+    // If there is no data/readme array property, create one
+    if (!projectData.projects) {
+        projectData.projects = [];
+    }
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is the title of your project for the README?',
+            validate: titleInput => {
+                if (titleInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a title for your README');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
             name: 'name',
             message: 'What is your name?',
             validate: nameInput => {
@@ -35,11 +68,6 @@ const questionsUser = () => {
         },
         {
             type: 'input',
-            name: 'about',
-            message: 'Tell us a little about yourself:'
-        },
-        {
-            type: 'input',
             name: 'email',
             message: 'What is your Email address?',
             validate: emailInput => {
@@ -47,34 +75,6 @@ const questionsUser = () => {
                     return true;
                 } else {
                     console.log('You have to enter an Email!');
-                    return false;
-                }
-            }
-        }
-    ]);
-};
-
-const questionsProject = (projectData) => {
-    console.log(`
-        ===================
-        Create a New README
-        ===================
-    `);
-console.log(projectData);
-    // If there is no data/readme array property, create one
-    if (!projectData.projects) {
-        projectData.projects = [];
-    }
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'title',
-            message: 'What is the title of your project for the README?',
-            validate: titleInput => {
-                if (titleInput) {
-                    return true;
-                } else {
-                    console.log('Please enter a title for your README');
                     return false;
                 }
             }
@@ -135,11 +135,7 @@ console.log(projectData);
             }
         }
     ])
-   /* .then(projectData => {
-    projectData.projects.push(projectData);
-    return projectData;    
-   */ //})
-};
+  };
 
 
 // TODO: Create a function to write README file
@@ -160,11 +156,7 @@ console.log(projectData);
   });
 };
 
-// TODO: Create a function to initialize app
-// function init() {}
 
-// Function call to initialize app
-//init();
 questionsUser()
     .then(questionsProject)
     .then(projectData => {
@@ -173,10 +165,6 @@ questionsUser()
     console.log('Readme', readMe);
     return writeFile(readMe);
     })
-    //.then(pageMD => {
-      //  console.log("pageMD", pageMD);
-    //return writeFile(pageMD);
-    //})
-    .catch(err => {
+     .catch(err => {
         console.log(err);
     });
